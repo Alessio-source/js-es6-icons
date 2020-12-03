@@ -8,6 +8,11 @@
 // definire un array di colori e associare ad ogni tipo di icona un colore.
 // Visualizzare le icone di colore diverso in base al tipo.
 
+// milestone 3:
+// aggiungere una select per filtrare le icone in base al tipo.
+// Popolare le options della select dinamicamente e, ogni volta che cambia il
+// valore selezionato, visualizzare le icone corrispondenti.
+
 $(document).ready(
   function() {
 
@@ -110,18 +115,26 @@ $(document).ready(
       },
     ];
 
-    const colors = ["green", "red", "lightblue"]
+    const colors = ["green", "red", "lightblue"];
 
     colorsForType(icons, colors);
     printIcons(icons);
+    selectTypes(icons);
 
-    console.log(icons);
+    $(".select").change(
+      function() {
+        const filteredIcons = icons.filter((element) => { return element.type == $(this).val()});
+        printIcons(filteredIcons);
+      }
+    );
+
   }
 );
 
 function printIcons(array) {
 
   let htmlElement = $(".icons");
+  htmlElement.html("");
 
   array.forEach(
     function(element, index){
@@ -140,6 +153,22 @@ function colorsForType(array, colorArray) {
         element.color = colorArray[1];
       } else if (element.type == "vegetable") {
         element.color = colorArray[2];
+      }
+    }
+  );
+}
+
+function selectTypes(array) {
+
+  let selectElement = $(".select");
+  let types = [];
+
+  array.forEach(
+    function(element, index) {
+      var type = element.type;
+      if (!(types.includes(type))) {
+        types.push(element.type);
+        selectElement.append(`<option value="${type}">${type}</option>`)
       }
     }
   );
