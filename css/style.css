@@ -1,3 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  padding: 15px;
+  background-color: #c24914;
+  height: 90px;
+}
+
+.icons {
+  height: calc(100vh - 90px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 15px;
+  background-color: #fc8621;
+}
+
+.fas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 40px;
+  background-color: #f9e0ae;
+  padding: 15px;
+  border-radius: 10px;
+}
+
 .fas > span {
+  font-size: 18px;
   color: black;
 }
