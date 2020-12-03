@@ -123,8 +123,12 @@ $(document).ready(
 
     $(".select").change(
       function() {
-        const filteredIcons = icons.filter((element) => { return element.type == $(this).val()});
-        printIcons(filteredIcons);
+        if ($(this).val() == "") {
+          printIcons(icons);
+        } else {
+          const filteredIcons = icons.filter((element) => { return element.type == $(this).val()});
+          printIcons(filteredIcons);
+        }
       }
     );
 
